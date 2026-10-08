@@ -1,0 +1,19 @@
+---
+// Footer.astro
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+    <p>© {year} Lira Acedo Gijon · Hecho con Astro</p>
+</footer>
+
+<style>
+    .footer {
+        text-align: center;
+        padding: 2rem;
+        background-color: #084973; /* Lyons Blue */
+        color: #ffc20a; /* Mikado Yellow */
+        border-top: 3px solid #f3620f; /* Ryza Dust */
+        font-family: "Georgia", serif;
+    }
+</style>

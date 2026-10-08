@@ -1,0 +1,123 @@
+---
+const githubUrl = "https://github.com/TapuLira-afk";
+const githubAvatar = "https://github.com/TapuLira-afk.png";
+---
+
+<nav class="navbar">
+    <a
+        href={githubUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="github-link"
+    >
+        <img src={githubAvatar} alt="Mi GitHub" class="github-icon" />
+    </a>
+
+    <ul class="nav-links">
+        <li>
+            <a href="#acerca-de-mi" class="nav-item acercade">acerca de mi</a>
+        </li>
+        <li><a href="#proyectos" class="nav-item proyectos">proyectos</a></li>
+        <li>
+            <a href="#tecnologias" class="nav-item tecnologias">tecnologias</a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background-color: #084973;
+        border-bottom: 3px solid #f3620f;
+        font-family: "Georgia", serif;
+    }
+
+    .github-link {
+        display: flex;
+        align-items: center;
+        transition: transform 0.3s ease;
+    }
+
+    .github-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: 2px solid #ffc20a;
+        object-fit: cover;
+        transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .github-link:hover .github-icon {
+        border-color: #da0d1e;
+        box-shadow: 0 0 12px #da0d1e;
+        transform: scale(1.1);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-item {
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        position: relative;
+        transition:
+            color 0.3s ease,
+            text-shadow 0.3s ease;
+    }
+
+    .nav-item::before {
+        content: "{ ";
+        font-weight: normal;
+        color: #ffc20a;
+        transition: color 0.3s ease;
+    }
+    .nav-item::after {
+        content: " }";
+        font-weight: normal;
+        color: #ffc20a;
+        transition: color 0.3s ease;
+    }
+
+    .acercade {
+        color: #f3620f;
+    }
+    .proyectos {
+        color: #ffc20a;
+    }
+    .tecnologias {
+        color: #078d8c;
+    }
+
+    .nav-item:hover {
+        text-shadow: 0 0 8px currentColor;
+    }
+    .nav-item:hover::before,
+    .nav-item:hover::after {
+        color: #da0d1e;
+    }
+
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+        .nav-links {
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+</style>
