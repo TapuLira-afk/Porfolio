@@ -53,7 +53,7 @@ La aplicación está configurada para ejecutarse dentro de Figma Make, pero tamb
 
 ## Autor
 
-Desarrollado por [Tu Nombre]
+Desarrollado por Lira Acedo Gijon
 
 ## Licencia
 
