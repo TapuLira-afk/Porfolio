@@ -1,0 +1,211 @@
+/* Capa de la bombilla: cuelga del techo del hero. --lit (1 día, 0 noche) vive en :root. */
+.lb-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lb-rig {
+  position: absolute;
+  right: max(5.5rem, 7vw);
+  top: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.lb-cord {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: visible;
+  filter: brightness(calc(0.6 + 0.4 * var(--lit)));
+}
+
+.lb-cord path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lb-cord .r-shadow {
+  stroke: rgb(0 0 0 / 45%);
+  stroke-width: 4;
+  transform: translate(4px, 5px);
+  filter: blur(2.5px);
+}
+
+.lb-cord .r-ghost {
+  stroke: #fff;
+  stroke-width: 3;
+  filter: blur(2px);
+}
+
+.lb-cord .r-rim {
+  stroke: #0a0a0a;
+  stroke-width: 4.6;
+}
+
+.lb-cord .r-body {
+  stroke: #e9e6ff;
+  stroke-width: 3;
+}
+
+.lb-cord .r-hl {
+  stroke: #fff;
+  stroke-width: 1;
+  transform: translate(-0.7px, 0);
+}
+
+.lb-pull {
+  position: absolute;
+  left: -64px;
+  top: 240px;
+  width: 128px;
+  height: 184px;
+  isolation: isolate;
+  pointer-events: auto;
+  cursor: grab;
+  touch-action: none;
+  transform-origin: 50% 0;
+  will-change: transform;
+  outline: none;
+}
+
+.lb-pull.is-dragging {
+  cursor: grabbing;
+}
+
+.lb-pull:focus-visible .lb-bulb {
+  outline: 3px dashed var(--floor);
+  outline-offset: 6px;
+}
+
+.lb-bulb {
+  position: relative;
+  width: 128px;
+  height: 184px;
+}
+
+.lb-bulb span {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  background-size: 128px 744px;
+  background-position: 0 -560px;
+  image-rendering: auto;
+}
+
+.lb-bulb .b-night {
+  filter: drop-shadow(0 0 1px #8892b8) drop-shadow(0 0 1px #8892b8);
+}
+
+.lb-bulb .b-glow {
+  inset: 0;
+  opacity: var(--heat, 0);
+  background:
+    radial-gradient(circle at 53% 50%, rgb(255 250 225 / 95%) 0 4px, transparent 5px),
+    radial-gradient(circle at 53% 50%, rgb(255 205 110 / 70%) 0, rgb(255 170 70 / 28%) 22px, transparent 36px);
+  mix-blend-mode: screen;
+  background-size: 100% 100%;
+  background-position: 0 0;
+}
+
+.lb-handle {
+  position: absolute;
+  left: 50%;
+  top: 172px;
+  width: 0;
+  pointer-events: none;
+}
+
+.lb-handle .string,
+.lb-handle .knob {
+  position: absolute;
+  left: 0;
+  transform: translateX(-50%);
+}
+
+.lb-handle .string {
+  top: 0;
+  width: 2px;
+  height: 20px;
+}
+
+.lb-handle .knob {
+  top: 18px;
+  width: 18px;
+  height: 18px;
+  box-sizing: border-box;
+  border: 3.5px solid;
+  border-radius: 50%;
+}
+
+.lb-handle .h-day {
+  opacity: var(--lit);
+}
+
+.lb-handle .h-night {
+  opacity: calc(1 - var(--lit));
+}
+
+.lb-handle .string.h-day {
+  background: #fff;
+}
+
+.lb-handle .knob.h-day {
+  border-color: #fff;
+  background: var(--space);
+}
+
+.lb-handle .string.h-night {
+  background: #8892b8;
+}
+
+.lb-handle .knob.h-night {
+  border-color: #8892b8;
+  background: #0b0d18;
+}
+
+.lb-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tema de toda la web: velo nocturno + elementos claros atenuados según --lit */
+.night-veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 50% 20%, #1a0f4d 0%, #0a0626 55%, #030112 100%);
+  opacity: calc(1 - var(--lit));
+}
+
+.room-wall {
+  filter: brightness(calc(1 - (1 - var(--lit)) * 0.3));
+}
+
+.room-floor {
+  background:
+    radial-gradient(color-mix(in srgb, #ff9a6a calc(var(--lit) * 100%), #a85a8a) 2px, transparent 2.5px) 0 0 / 46px 46px,
+    color-mix(in srgb, var(--floor) calc(var(--lit) * 100%), #8a6aa8);
+}
+
+.party-card,
+.char-card {
+  filter: brightness(calc(1 - (1 - var(--lit)) * 0.2));
+}

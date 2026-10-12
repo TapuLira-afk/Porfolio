@@ -1,0 +1,16 @@
+:root {
+  --void: #0a0a0a;
+  --ink: #ffffff;
+  --space: #5a2bff;
+  --space-deep: #3a14c8;
+  --floor: #ffd6f6;
+  --lilac: #c9a6ff;
+  --hp: #ff2d3d;
+  --juice: #1fb5ad;
+  --gold: #f4c46a;
+  --grey: #d9d9d9;
+  --lit: 1;
+
+  --font-hand: "Gaegu", "Comic Sans MS", cursive;
+  --font-pixel: "Pixelify Sans", monospace;
+}

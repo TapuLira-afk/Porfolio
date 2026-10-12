@@ -1,0 +1,12 @@
+{
+  "title": "Lira Acedo Gijón · Portfolio DAW2",
+  "description": "Portfolio de Lira Acedo Gijón, estudiante de Desarrollo de Aplicaciones Web (DAW2): tecnologías, proyectos y contacto, en español e inglés.",
+  "language": "es",
+  "robots": {
+    "index": true
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
