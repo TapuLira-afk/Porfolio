@@ -44,9 +44,17 @@ export const projects: Project[] = [
   {
     slug: "reloj-juicio-final",
     name: "EL RELOJ DEL JUICIO FINAL",
-    level: 5,
+    level: 1,
     tags: ["HTML", "CSS", "JavaScript"],
     url: "https://github.com/TapuLira-afk/El-Reloj-del-Juicio-Final",
     demo: "https://tapulira-afk.github.io/El-Reloj-del-Juicio-Final/",
+  },
+  {
+    slug: "Login",
+    name: "Login",
+    level: 1,
+    tags: ["HTML", "CSS", "JavaScript"],
+    url: "https://github.com/TapuLira-afk/Login",
+    demo: "https://tapulira-afk.github.io/Login/",
   },
 ];
