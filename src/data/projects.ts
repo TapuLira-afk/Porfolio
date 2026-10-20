@@ -57,4 +57,12 @@ export const projects: Project[] = [
     url: "https://github.com/TapuLira-afk/Login",
     demo: "https://tapulira-afk.github.io/Login/",
   },
+  {
+    slug: "Registro_Enunciado",
+    name: "Registro_Enunciado",
+    level: 1,
+    tags: ["HTML", "CSS", "JavaScript"],
+    url: "https://github.com/TapuLira-afk/Registro_Enunciado",
+    demo: "https://tapulira-afk.github.io/Registro_Enunciado/",
+  },
 ];
