@@ -44,7 +44,8 @@ const en: Dict = {
       // TASKQUEST: "Gamified task manager with levels and daily streaks.",
       // "TIENDA PIXEL": "Sticker e-commerce with cart, orders and an admin panel.",
       "EL RELOJ DEL JUICIO FINAL": "Your age in weird numbers, a countdown and the time in other cities, built with Day.js.",
-      "Login": "Login logic in JavaScript with validation, accessible errors and show/hide password."
+      "Login": "Login logic in JavaScript with validation, accessible errors and show/hide password.",
+      "Statement Registration": "Exercise of a registration form in HTML/CSS/JS that validates the username (format and availability), email, date of birth and password with confirmation on the client, showing accessible errors.",
       // "API BIBLIOTECA": "REST API to manage loans for a school library.",
     },
   },

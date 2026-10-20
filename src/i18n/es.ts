@@ -45,7 +45,7 @@ const es = {
       // "API BIBLIOTECA": "API REST para gestionar préstamos de una biblioteca escolar.",
       "EL RELOJ DEL JUICIO FINAL": "Tu edad en cifras raras, una cuenta atrás y la hora en otras ciudades, hecho con Day.js.",
       "Login": "Lógica de login en JavaScript con validación, errores accesibles y mostrar/ocultar contraseña.",
-      "Registro Enunciado": "Ejercicio de formulario de registro en HTML/CSS/JS que valida en el cliente nombre de usuario (formato y disponibilidad), email, fecha de nacimiento y contraseña con confirmación, mostrando errores accesibles."
+      "Registro Enunciado": "Ejercicio de formulario de registro en HTML/CSS/JS que valida en el cliente nombre de usuario (formato y disponibilidad), email, fecha de nacimiento y contraseña con confirmación, mostrando errores accesibles.",
     } as Record<string, string>,
   },
   detail: { back: "volver", code: "ver código", demo: "ver demo", tech: "tecnologías", image: "Captura de", notFound: "Proyecto no encontrado" },
