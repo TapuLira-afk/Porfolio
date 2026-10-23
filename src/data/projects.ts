@@ -58,7 +58,7 @@ export const projects: Project[] = [
     demo: "https://tapulira-afk.github.io/Login/",
   },
   {
-    slug: "Registro Enunciado",
+    slug: "Registro_Enunciado",
     name: "Registro Enunciado",
     level: 1,
     tags: ["HTML", "CSS", "JavaScript"],
@@ -66,11 +66,11 @@ export const projects: Project[] = [
     demo: "https://tapulira-afk.github.io/Registro_Enunciado/",
   },
   {
-    slug: "La Armeria RPG",
+    slug: "armeria",
     name: "La Armeria RPG",
     level: 1,
     tags: ["HTML", "CSS", "JavaScript"],
-    url: "https://github.com/TapuLira-afk/armeria",
+    url: "https://github.com/TapuLira-afk/armeria/",
     demo: "https://tapulira-afk.github.io/armeria/",
   },
 ];
