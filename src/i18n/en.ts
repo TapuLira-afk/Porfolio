@@ -46,6 +46,7 @@ const en: Dict = {
       "EL RELOJ DEL JUICIO FINAL": "Your age in weird numbers, a countdown and the time in other cities, built with Day.js.",
       "Login": "Login logic in JavaScript with validation, accessible errors and show/hide password.",
       "Statement Registration": "Exercise of a registration form in HTML/CSS/JS that validates the username (format and availability), email, date of birth and password with confirmation on the client, showing accessible errors.",
+      "The Armeria RPG": "Practice ES6 JavaScript to create an RPG armory with classes, catalog, player, filters, search, non-cumulative offers and purchases with notifications."
       // "API BIBLIOTECA": "REST API to manage loans for a school library.",
     },
   },

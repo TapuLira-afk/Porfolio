@@ -46,6 +46,7 @@ const es = {
       "EL RELOJ DEL JUICIO FINAL": "Tu edad en cifras raras, una cuenta atrás y la hora en otras ciudades, hecho con Day.js.",
       "Login": "Lógica de login en JavaScript con validación, errores accesibles y mostrar/ocultar contraseña.",
       "Registro Enunciado": "Ejercicio de formulario de registro en HTML/CSS/JS que valida en el cliente nombre de usuario (formato y disponibilidad), email, fecha de nacimiento y contraseña con confirmación, mostrando errores accesibles.",
+      "La Armeria RPG": "Práctica de JavaScript ES6 para crear una armería RPG con clases, catálogo, jugador, filtros, búsqueda, ofertas no acumulativas y compras con notificaciones."
     } as Record<string, string>,
   },
   detail: { back: "volver", code: "ver código", demo: "ver demo", tech: "tecnologías", image: "Captura de", notFound: "Proyecto no encontrado" },
