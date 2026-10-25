@@ -1,11 +1,11 @@
 name: Update Projects JSON
 
 on:
-    workflow_dispatch: # Solo manual: tú decides cuándo
+    workflow_dispatch:
 
 permissions:
-    contents: write # Para hacer push del JSON
-    actions: write # Para disparar el deploy con gh workflow run
+    contents: write
+    actions: write
 
 jobs:
     update:
@@ -20,8 +20,7 @@ jobs:
               with:
                   repository: TapuLira-afk/TU_REPO_API
                   path: api
-                  # Si el repo de la API es privado, descomenta:
-                  # token: ${{ secrets.API_REPO_PAT }}
+                  # token: ${{ secrets.API_REPO_PAT }}   # solo si el repo es privado
 
             - name: Setup Java
               uses: actions/setup-java@v4
@@ -35,10 +34,8 @@ jobs:
                   GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
               run: |
                   ./mvnw -B clean package -DskipTests
-
                   java -jar target/app.jar > /tmp/api.log 2>&1 &
                   echo $! > /tmp/api.pid
-
                   for i in $(seq 1 30); do
                     if curl -sf http://localhost:8080/api/projects -o /tmp/projects.json; then
                       echo "✅ API lista tras $((i*2))s"
@@ -46,33 +43,32 @@ jobs:
                     fi
                     sleep 2
                   done
-
                   if [ ! -s /tmp/projects.json ]; then
                     echo "❌ La API no devolvió datos. Log:"
                     cat /tmp/api.log
                     kill $(cat /tmp/api.pid) || true
                     exit 1
                   fi
-
                   kill $(cat /tmp/api.pid) || true
-
                   mkdir -p ../public/data
                   cp /tmp/projects.json ../public/data/projects.json
 
             - name: Commit and push if changed
+              id: commit
               run: |
                   git config user.name "github-actions[bot]"
                   git config user.email "github-actions[bot]@users.noreply.github.com"
                   git add public/data/projects.json
                   if git diff --cached --quiet; then
-                    echo "Sin cambios en el JSON, no se commitea."
+                    echo "changed=false" >> "$GITHUB_OUTPUT"
+                    echo "Sin cambios, no se commitea."
                   else
                     git commit -m "chore: update projects data"
                     git push
+                    echo "changed=true" >> "$GITHUB_OUTPUT"
                   fi
 
             - name: Trigger deploy
-              if: success()
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
               run: gh workflow run deploy.yml --ref main
