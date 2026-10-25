@@ -20,7 +20,8 @@ jobs:
               with:
                   repository: TapuLira-afk/info-github
                   path: api
-                  token: ${{ secrets.GH_API_TOKEN }} # solo si el repo es privado
+                  # Si el repo es privado, asegúrate de que este token tenga permisos de lectura sobre él
+                  token: ${{ secrets.GH_API_TOKEN }}
 
             - name: Setup Java
               uses: actions/setup-java@v4
@@ -29,11 +30,14 @@ jobs:
                   java-version: "25"
 
             - name: Build API and fetch JSON
-              working-directory: api
+              # AQUÍ ESTÁ EL CAMBIO: apuntamos a la subcarpeta donde está el pom.xml
+              working-directory: api/github
               env:
                   GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
               run: |
-                  ./mvnw -B clean package -DskipTests
+                  # Usamos 'mvn' en lugar de './mvnw' para evitar fallos si falta el wrapper
+                  mvn -B clean package -DskipTests
+
                   java -jar target/app.jar > /tmp/api.log 2>&1 &
                   echo $! > /tmp/api.pid
                   for i in $(seq 1 30); do
@@ -50,8 +54,10 @@ jobs:
                     exit 1
                   fi
                   kill $(cat /tmp/api.pid) || true
-                  mkdir -p ../public/data
-                  cp /tmp/projects.json ../public/data/projects.json
+
+                  # Como estamos en api/github, subimos dos niveles para llegar a la raíz del portafolio
+                  mkdir -p ../../public/data
+                  cp /tmp/projects.json ../../public/data/projects.json
 
             - name: Commit and push if changed
               id: commit
