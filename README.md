@@ -52,10 +52,6 @@ src/
 
 La aplicación está configurada para ejecutarse dentro de Figma Make, pero también puede ser desplegada como una aplicación web standalone.
 
-## Autor
+## Autora
 
 Desarrollado por Lira Acedo Gijon
-
-## Licencia
-
-Este proyecto es de código abierto y se encuentra bajo la licencia MIT.
