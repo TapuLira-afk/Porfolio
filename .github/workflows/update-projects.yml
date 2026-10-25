@@ -35,17 +35,18 @@ jobs:
               run: |
                   mvn -B clean package -DskipTests
 
-                  # 👇 AQUÍ ESTÁ EL CAMBIO: forzamos el puerto 8080 👇
                   java -jar target/app.jar --server.port=8080 > /tmp/api.log 2>&1 &
-
                   echo $! > /tmp/api.pid
+
                   for i in $(seq 1 30); do
-                    if curl -sf http://localhost:8080/api/projects -o /tmp/projects.json; then
+                    # Aquí pasamos el nombre de usuario en la URL
+                    if curl -sf http://localhost:8080/api/projects/TapuLira-afk -o /tmp/projects.json; then
                       echo "✅ API lista tras $((i*2))s"
                       break
                     fi
                     sleep 2
                   done
+
                   if [ ! -s /tmp/projects.json ]; then
                     echo "❌ La API no devolvió datos. Log:"
                     cat /tmp/api.log
