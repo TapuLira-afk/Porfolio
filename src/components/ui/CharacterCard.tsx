@@ -5,14 +5,12 @@ import { useLanguage } from "../../i18n/LanguageContext";
 export default function CharacterCard({ project }: { project: Project }) {
   const { t } = useLanguage();
 
-  const description =
-    t.projects.desc[project.name] ??
-    project.description ??
-    (t.lang === "es" ? "Sin descripción" : "No description");
+  // Si no hay descripción en GitHub, usamos un texto por defecto
+  const description = project.description ?? (t.lang === "es" ? "Sin descripción" : "No description");
 
   return (
     <a className="char-card" href={`#/proyecto/${project.slug}`}>
-      <div className="char-name">{project.name}</div>
+      <div className="char-name">{project.prettyName}</div> {/* <-- Nombre automático */}
       <div className="char-lvl">
         <span>LVL. {project.level}</span>
         <span className="char-lvl-bar" />

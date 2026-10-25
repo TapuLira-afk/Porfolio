@@ -7,19 +7,16 @@ type State =
     | { status: "success"; projects: Project[] };
 
 function slugify(s: string): string {
-    return s
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-|-$/g, "");
+    return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-/**
- * Nivel "RPG" derivado del número de lenguajes del repo.
- * 1 lenguaje → LVL 2, 2 lenguajes → LVL 3, 3 lenguajes → LVL 4...
- * Cap a 10 para que no se dispare en repos con muchos lenguajes.
- */
+// Convierte "El-Reloj-del-Juicio-Final" a "El Reloj Del Juicio Final"
+function formatName(name: string): string {
+    return name
+        .replace(/[-_]/g, " ") // Cambia guiones y guiones bajos por espacios
+        .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitaliza
+}
+
 function deriveLevel(lenguajes: string[]): number {
     return Math.min(1 + lenguajes.length, 10);
 }
@@ -30,7 +27,11 @@ export function useProjects(): State {
     useEffect(() => {
         let cancelled = false;
 
-        fetch("/data/projects.json")
+        // 👇 AQUÍ ESTÁ EL CAMBIO 👇
+        // Usamos BASE_URL para que funcione en GitHub Pages y en local
+        const jsonUrl = `${import.meta.env.BASE_URL}data/projects.json`.replace(/\/\//g, "/");
+
+        fetch(jsonUrl)
             .then((res) => {
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 return res.json() as Promise<ProjectJson[]>;
@@ -42,9 +43,8 @@ export function useProjects(): State {
                         ...p,
                         slug: slugify(p.name),
                         level: deriveLevel(p.lenguajes),
+                        prettyName: formatName(p.name),
                     }))
-                    // Los de mayor nivel primero. Si quieres orden alfabético:
-                    // .sort((a, b) => a.name.localeCompare(b.name))
                     .sort((a, b) => b.level - a.level);
 
                 setState({ status: "success", projects });
@@ -53,9 +53,7 @@ export function useProjects(): State {
                 if (!cancelled) setState({ status: "error", error });
             });
 
-        return () => {
-            cancelled = true;
-        };
+        return () => { cancelled = true; };
     }, []);
 
     return state;

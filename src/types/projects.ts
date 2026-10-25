@@ -4,11 +4,12 @@ export type ProjectJson = {
     lenguajes: string[];
     enlaceDemo: string;
     enlacePage: string;
-    imagen: string;
-    avatar: string;
+    imgUserUrl: string;
+    nameUserUrl: string;
 };
 
 export type Project = ProjectJson & {
     slug: string;
     level: number;
+    prettyName: string;
 };
