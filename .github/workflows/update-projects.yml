@@ -18,9 +18,9 @@ jobs:
             - name: Checkout API repo
               uses: actions/checkout@v4
               with:
-                  repository: TapuLira-afk/TU_REPO_API
+                  repository: TapuLira-afk/info-github
                   path: api
-                  # token: ${{ secrets.API_REPO_PAT }}   # solo si el repo es privado
+                  # token: ${{ secrets.GH_API_TOKEN }}   # solo si el repo es privado
 
             - name: Setup Java
               uses: actions/setup-java@v4
