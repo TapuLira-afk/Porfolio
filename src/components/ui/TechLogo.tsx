@@ -1,4 +1,4 @@
-import { siCss, siFigma, siGit, siGithub, siHtml5, siJavascript, siMysql, siPhp, siReact, siTypescript } from "../../data/techGlyphs";
+import { siCss, siFigma, siGit, siGithub, siHtml5, siJavascript, siMysql, siPhp, siReact, siTypescript, } from "../../data/techGlyphs";
 import type { Glyph } from "../../data/techGlyphs";
 
 const JAVA: Glyph = {
