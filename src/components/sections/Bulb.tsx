@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { BULB_CONFIG as CONFIG } from "../../data/bulb";
-import bulbUrl from "../../assets/lightbulb.png";
+import bulbUrl from "../../assets/bombilla.webp";
 import { useLanguage } from "../../i18n/LanguageContext";
 
 const clamp = (v: number, a: number, b: number) => Math.min(b, Math.max(a, v));
@@ -57,7 +57,7 @@ export default function Bulb() {
     let last = performance.now();
     let raf = 0;
     let running = false;
-    let wake = () => {};
+    let wake = () => { };
 
     const N = 22;
     const SUB = 1 / 120;
@@ -393,33 +393,26 @@ export default function Bulb() {
 
   return (
     <div className="lb-layer" ref={sceneRef} data-mode="day">
-        <div className="lb-rig" ref={rigRef}>
-          <svg className="lb-cord" width="1" height="1" aria-hidden="true" focusable="false">
-            <g ref={cordRef}>
-              <path className="r-shadow" />
-              <path className="r-ghost" />
-              <path className="r-rim" />
-              <path className="r-body" />
-              <path className="r-hl" />
-            </g>
-          </svg>
+      <div className="lb-rig" ref={rigRef}>
+        <svg className="lb-cord" width="1" height="1" aria-hidden="true" focusable="false">
+          <g ref={cordRef}>
+            <path className="r-shadow" />
+            <path className="r-ghost" />
+            <path className="r-rim" />
+            <path className="r-body" />
+            <path className="r-hl" />
+          </g>
+        </svg>
 
-          <div className="lb-pull" ref={pullRef} role="button" tabIndex={0} aria-pressed="false" aria-label={t.bulb.day}>
-            <div className="lb-bulb" aria-hidden="true">
-              <span className="b-night" style={{ backgroundImage: `url(${bulbUrl})` }} />
-              <span className="b-glow" />
-            </div>
-
-            <div className="lb-handle" aria-hidden="true">
-              <span className="string h-day" />
-              <span className="string h-night" />
-              <span className="knob h-day" />
-              <span className="knob h-night" />
-            </div>
+        <div className="lb-pull" ref={pullRef} role="button" tabIndex={0} aria-pressed="false" aria-label={t.bulb.day}>
+          <div className="lb-bulb" aria-hidden="true">
+            <span className="b-night" style={{ backgroundImage: `url(${bulbUrl})` }} />
+            <span className="b-glow" />
           </div>
         </div>
+      </div>
 
-        <p className="lb-sr" ref={statusRef} aria-live="polite" />
+      <p className="lb-sr" ref={statusRef} aria-live="polite" />
     </div>
   );
 }

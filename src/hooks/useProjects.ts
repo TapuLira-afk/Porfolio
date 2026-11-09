@@ -27,8 +27,6 @@ export function useProjects(): State {
     useEffect(() => {
         let cancelled = false;
 
-        // 👇 AQUÍ ESTÁ EL CAMBIO 👇
-        // Usamos BASE_URL para que funcione en GitHub Pages y en local
         const jsonUrl = `${import.meta.env.BASE_URL}data/projects.json`.replace(/\/\//g, "/");
 
         fetch(jsonUrl)
